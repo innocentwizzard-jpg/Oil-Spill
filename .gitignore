@@ -1,0 +1,29 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyc
+
+# Virtual environment
+.venv/
+venv/
+env/
+
+# Pytest
+.pytest_cache/
+
+# Large AIS datasets
+data/ais2025/
+*.tgz
+*.csv.zst
+*.gpkg
+
+# Frontend
+frontend/node_modules/
+frontend/dist/
+
+# Generated output
+graphify-out/
+
+# Environment / secrets
+.env
+.env.*
