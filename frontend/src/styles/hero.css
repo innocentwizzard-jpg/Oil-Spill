@@ -1,0 +1,483 @@
+/**
+ * OCEAN SENTINEL — CINEMATIC HERO STYLES
+ * ==============================================================================
+ * Deep underwater atmospheric styling with procedural volumetric light shafts,
+ * caustics shimmer, marine particle canvas, tactical HUD telemetry readouts,
+ * and seamless abyss fade into Section 2.
+ */
+
+/* ==============================================================================
+   1. HERO CONTAINER & ENVIRONMENT
+   ============================================================================== */
+
+.os-hero {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  background-color: var(--color-bg-base);
+  background:
+    radial-gradient(ellipse 90% 60% at 50% -10%, #0d3152 0%, #081d33 35%, #050b14 85%);
+  padding-top: calc(var(--nav-height) + 24px);
+  padding-bottom: 24px;
+  color: var(--color-text-primary);
+  box-sizing: border-box;
+}
+
+/* Underwater Depth Vignette */
+.os-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 50% 50%, transparent 40%, rgba(2, 6, 11, 0.75) 100%),
+    linear-gradient(180deg, rgba(5, 11, 20, 0.2) 0%, transparent 40%, rgba(5, 11, 20, 0.95) 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ==============================================================================
+   2. VOLUMETRIC LIGHT RAYS & CAUSTICS SHIMMER
+   ============================================================================== */
+
+.os-hero__atmosphere {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Light Shafts Container */
+.os-hero__light-shafts {
+  position: absolute;
+  top: -20%;
+  left: -20%;
+  width: 140%;
+  height: 120%;
+  mix-blend-mode: screen;
+  opacity: 0.75;
+}
+
+.os-hero__shaft {
+  position: absolute;
+  top: 0;
+  transform-origin: 50% 0%;
+  filter: blur(28px);
+}
+
+.os-hero__shaft--1 {
+  left: 28%;
+  width: 180px;
+  height: 100%;
+  background: linear-gradient(
+    108deg,
+    rgba(0, 213, 232, 0.18) 0%,
+    rgba(57, 169, 255, 0.08) 35%,
+    transparent 75%
+  );
+  transform: skewX(-14deg);
+  animation: shaftSway1 14s ease-in-out infinite alternate;
+}
+
+.os-hero__shaft--2 {
+  left: 45%;
+  width: 260px;
+  height: 100%;
+  background: linear-gradient(
+    115deg,
+    rgba(57, 169, 255, 0.15) 0%,
+    rgba(0, 213, 232, 0.06) 45%,
+    transparent 80%
+  );
+  transform: skewX(-10deg);
+  animation: shaftSway2 18s ease-in-out infinite alternate;
+}
+
+.os-hero__shaft--3 {
+  left: 62%;
+  width: 140px;
+  height: 90%;
+  background: linear-gradient(
+    102deg,
+    rgba(0, 213, 232, 0.14) 0%,
+    rgba(0, 245, 160, 0.04) 40%,
+    transparent 70%
+  );
+  transform: skewX(-16deg);
+  animation: shaftSway3 16s ease-in-out infinite alternate;
+}
+
+.os-hero__shaft--4 {
+  left: 15%;
+  width: 120px;
+  height: 85%;
+  background: linear-gradient(
+    112deg,
+    rgba(57, 169, 255, 0.11) 0%,
+    transparent 65%
+  );
+  transform: skewX(-8deg);
+  animation: shaftSway2 20s ease-in-out infinite alternate-reverse;
+}
+
+/* Water Surface Caustics Shimmer */
+.os-hero__caustics {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60%;
+  background-image:
+    radial-gradient(ellipse 20% 12% at 35% 15%, rgba(0, 213, 232, 0.12) 0%, transparent 70%),
+    radial-gradient(ellipse 25% 14% at 65% 20%, rgba(57, 169, 255, 0.10) 0%, transparent 70%),
+    radial-gradient(ellipse 30% 15% at 50% 8%, rgba(0, 213, 232, 0.08) 0%, transparent 60%);
+  filter: blur(12px);
+  animation: causticsPulse 9s ease-in-out infinite alternate;
+}
+
+/* Underwater Particle Canvas */
+.os-hero__canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* ==============================================================================
+   3. HERO CONTENT & TYPOGRAPHY
+   ============================================================================== */
+
+.os-hero__content {
+  position: relative;
+  z-index: 10;
+  max-width: var(--max-w-content);
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+/* Tactical Top HUD Metadata Bar */
+.os-hero__hud-strip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  letter-spacing: var(--tracking-tactical);
+  color: var(--color-text-secondary);
+  animation: heroFadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.os-hero__hud-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 10px;
+  background: rgba(10, 27, 43, 0.6);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-xs);
+  backdrop-filter: blur(8px);
+}
+
+.os-hero__hud-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--color-accent-cyan);
+  box-shadow: 0 0 8px var(--color-accent-cyan);
+  animation: radarPing 2.4s ease-in-out infinite;
+}
+
+/* Eyebrow Pill */
+.os-hero__eyebrow {
+  margin-bottom: 16px;
+  animation: heroSlideUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Main Brand Heading: OCEAN SENTINEL */
+.os-hero__title {
+  margin: 0 0 12px 0;
+  font-family: var(--font-sans);
+  font-size: clamp(2.75rem, 6.5vw, 5.25rem);
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  line-height: 1.05;
+  color: var(--color-text-primary);
+  text-shadow:
+    0 0 40px rgba(0, 213, 232, 0.28),
+    0 2px 8px rgba(0, 0, 0, 0.8);
+  animation: heroSlideUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Supporting Heading: AI-POWERED OIL SPILL INTELLIGENCE */
+.os-hero__subtitle {
+  margin: 0 0 20px 0;
+  font-family: var(--font-mono);
+  font-size: clamp(0.95rem, 2vw, 1.35rem);
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  background: linear-gradient(135deg, #00D5E8 0%, #39A9FF 70%, #FFFFFF 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: heroSlideUp 1.1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Supporting Lead Message */
+.os-hero__lead {
+  margin: 0 auto 32px auto;
+  max-width: 680px;
+  font-size: clamp(1rem, 1.4vw, 1.15rem);
+  line-height: 1.65;
+  color: var(--color-text-secondary);
+  animation: heroSlideUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Primary Action Buttons */
+.os-hero__actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+  animation: heroSlideUp 1.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* ==============================================================================
+   4. TELEMETRY MICRO-GRID
+   ============================================================================== */
+
+.os-hero__telemetry {
+  position: relative;
+  z-index: 10;
+  max-width: var(--max-w-content);
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 24px;
+  box-sizing: border-box;
+}
+
+.os-hero__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  animation: heroFadeIn 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.os-hero__card {
+  position: relative;
+  background: rgba(10, 27, 43, 0.65);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 18px 16px;
+  text-align: left;
+  backdrop-filter: blur(14px);
+  transition: transform var(--transition-normal), border-color var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+.os-hero__card:hover {
+  transform: translateY(-3px);
+  border-color: var(--color-border-accent);
+  box-shadow: 0 8px 24px rgba(0, 213, 232, 0.12);
+}
+
+.os-hero__card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.os-hero__card-code {
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  color: var(--color-accent-cyan);
+  font-weight: 700;
+  letter-spacing: var(--tracking-wide);
+}
+
+.os-hero__card-title {
+  margin: 0 0 6px 0;
+  font-size: var(--text-sm);
+  font-weight: 700;
+  color: var(--color-text-primary);
+  letter-spacing: var(--tracking-wide);
+}
+
+.os-hero__card-desc {
+  margin: 0;
+  font-size: var(--text-xs);
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+}
+
+/* ==============================================================================
+   5. SCROLL INDICATOR & TRANSITION GRADIENT
+   ============================================================================== */
+
+.os-hero__footer {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 16px;
+  animation: heroFadeIn 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.os-hero__scroll-link {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  letter-spacing: var(--tracking-tactical);
+  transition: color var(--transition-fast), transform var(--transition-fast);
+}
+
+.os-hero__scroll-link:hover {
+  color: var(--color-accent-cyan);
+  transform: translateY(2px);
+}
+
+.os-hero__scroll-chevron {
+  animation: scrollBounce 2s ease-in-out infinite;
+  color: var(--color-accent-cyan);
+}
+
+/* Seamless Bottom Gradient Fade into Section 2 */
+.os-hero__bottom-gradient {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 140px;
+  background: linear-gradient(180deg, transparent 0%, rgba(5, 11, 20, 0.7) 60%, #050B14 100%);
+  pointer-events: none;
+  z-index: 4;
+}
+
+/* ==============================================================================
+   6. KEYFRAME ANIMATIONS
+   ============================================================================== */
+
+@keyframes shaftSway1 {
+  0% { transform: skewX(-14deg) scaleX(1); opacity: 0.7; }
+  100% { transform: skewX(-9deg) scaleX(1.15); opacity: 0.9; }
+}
+
+@keyframes shaftSway2 {
+  0% { transform: skewX(-10deg) scaleX(1); opacity: 0.65; }
+  100% { transform: skewX(-15deg) scaleX(1.2); opacity: 0.85; }
+}
+
+@keyframes shaftSway3 {
+  0% { transform: skewX(-16deg) scaleX(1.1); opacity: 0.6; }
+  100% { transform: skewX(-11deg) scaleX(0.95); opacity: 0.8; }
+}
+
+@keyframes causticsPulse {
+  0% { opacity: 0.6; transform: scale(1) translateY(0); }
+  100% { opacity: 0.95; transform: scale(1.04) translateY(-10px); }
+}
+
+@keyframes radarPing {
+  0% { transform: scale(0.9); opacity: 0.7; box-shadow: 0 0 4px var(--color-accent-cyan); }
+  50% { transform: scale(1.1); opacity: 1; box-shadow: 0 0 12px var(--color-accent-cyan); }
+  100% { transform: scale(0.9); opacity: 0.7; box-shadow: 0 0 4px var(--color-accent-cyan); }
+}
+
+@keyframes scrollBounce {
+  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(6px); }
+  60% { transform: translateY(3px); }
+}
+
+@keyframes heroFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes heroSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ==============================================================================
+   7. RESPONSIVE BREAKPOINTS
+   ============================================================================== */
+
+@media (max-width: 1024px) {
+  .os-hero__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .os-hero {
+    padding-top: calc(var(--nav-height) + 16px);
+  }
+
+  .os-hero__title {
+    font-size: 2.35rem;
+    letter-spacing: 0.08em;
+  }
+
+  .os-hero__subtitle {
+    font-size: 0.85rem;
+    letter-spacing: 0.14em;
+  }
+
+  .os-hero__lead {
+    font-size: 0.925rem;
+    margin-bottom: 24px;
+  }
+
+  .os-hero__actions {
+    flex-direction: column;
+    width: 100%;
+    gap: 12px;
+  }
+
+  .os-hero__actions a,
+  .os-hero__actions button {
+    width: 100%;
+  }
+
+  .os-hero__grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .os-hero__hud-strip {
+    font-size: 9px;
+    gap: 8px;
+  }
+}

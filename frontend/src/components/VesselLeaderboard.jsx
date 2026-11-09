@@ -159,7 +159,7 @@ function VesselLeaderboard() {
       )}
 
       <div className="demo-note">
-        AquaGuard AI — Attribution rankings derived from Member 3 multi-factor kinematic correlation.
+        Ocean Sentinel — Attribution rankings derived from Member 3 multi-factor kinematic correlation.
       </div>
     </section>
   );

@@ -1,0 +1,188 @@
+/**
+ * OCEAN SENTINEL — DESIGN SYSTEM TOKENS
+ * ==============================================================================
+ * Three-layer token architecture: Primitives -> Semantics -> Component variables.
+ * Aesthetic: Premium cinematic ocean-intelligence platform.
+ * 
+ * Strict palette constraints:
+ *   Near-black:    #050B14
+ *   Deep navy:     #0A1B2B
+ *   Cyan:          #00D5E8
+ *   Electric blue: #39A9FF
+ *   White:         #FFFFFF
+ *   Muted text:    #94A9B8 (blue-grey)
+ */
+
+:root {
+  /* ============================================================================
+     1. PRIMITIVE TOKENS — RAW VALUES
+     ============================================================================ */
+
+  /* Palette: Dark Oceanic Spectrum */
+  --os-raw-black:           #02060B;
+  --os-raw-near-black:      #050B14;
+  --os-raw-navy-950:        #071320;
+  --os-raw-navy-900:        #0A1B2B;
+  --os-raw-navy-850:        #0E2337;
+  --os-raw-navy-800:        #132E48;
+  --os-raw-navy-700:        #1A3D5E;
+  --os-raw-navy-600:        #244F78;
+
+  /* Palette: Electric Accents */
+  --os-raw-cyan:            #00D5E8;
+  --os-raw-cyan-hover:      #33DFF0;
+  --os-raw-cyan-active:     #00B6C7;
+  --os-raw-cyan-glow:       rgba(0, 213, 232, 0.35);
+  --os-raw-cyan-dim:        rgba(0, 213, 232, 0.12);
+  --os-raw-cyan-subtle:     rgba(0, 213, 232, 0.05);
+
+  --os-raw-blue:            #39A9FF;
+  --os-raw-blue-hover:      #5EB7FF;
+  --os-raw-blue-glow:       rgba(57, 169, 255, 0.35);
+  --os-raw-blue-dim:        rgba(57, 169, 255, 0.12);
+  --os-raw-blue-subtle:     rgba(57, 169, 255, 0.05);
+
+  --os-raw-white:           #FFFFFF;
+
+  /* Palette: Blue-Grey Neutrals */
+  --os-raw-grey-100:        #F0F5F8;
+  --os-raw-grey-200:        #DCE5EB;
+  --os-raw-grey-300:        #B8C9D4;
+  --os-raw-grey-400:        #94A9B8; /* Primary muted blue-grey */
+  --os-raw-grey-500:        #718898;
+  --os-raw-grey-600:        #4E6778;
+  --os-raw-grey-700:        #334856;
+  --os-raw-grey-800:        #1F2F3B;
+
+  /* Palette: Semantic Status Tiers */
+  --os-raw-status-live:     #00F5A0;
+  --os-raw-status-live-dim: rgba(0, 245, 160, 0.12);
+  --os-raw-status-amber:    #FFB703;
+  --os-raw-status-amber-dim:rgba(255, 183, 3, 0.12);
+  --os-raw-status-coral:    #FF5353;
+  --os-raw-status-coral-dim:rgba(255, 83, 83, 0.14);
+
+
+  /* ============================================================================
+     2. SEMANTIC TOKENS — PURPOSE ALIASES
+     ============================================================================ */
+
+  /* Surfaces & Backgrounds */
+  --color-bg-base:          var(--os-raw-near-black);
+  --color-bg-deep:          var(--os-raw-navy-950);
+  --color-bg-surface:       var(--os-raw-navy-900);
+  --color-bg-surface-hover: var(--os-raw-navy-850);
+  --color-bg-elevated:      var(--os-raw-navy-800);
+  --color-bg-glass:         rgba(10, 27, 43, 0.72);
+  --color-bg-glass-elevated:rgba(14, 35, 55, 0.82);
+  --color-bg-glass-subtle:  rgba(7, 19, 32, 0.55);
+
+  /* Gradients */
+  --gradient-ocean-deep:    linear-gradient(180deg, #050B14 0%, #0A1B2B 50%, #050B14 100%);
+  --gradient-ocean-radial:  radial-gradient(circle at 50% 0%, rgba(0, 213, 232, 0.09) 0%, transparent 65%);
+  --gradient-cyan-accent:   linear-gradient(135deg, #00D5E8 0%, #39A9FF 100%);
+  --gradient-glass-border:  linear-gradient(135deg, rgba(0, 213, 232, 0.25) 0%, rgba(57, 169, 255, 0.08) 50%, rgba(0, 213, 232, 0.18) 100%);
+
+  /* Borders & Dividers */
+  --color-border-subtle:    rgba(148, 169, 184, 0.12);
+  --color-border-medium:    rgba(57, 169, 255, 0.20);
+  --color-border-accent:    rgba(0, 213, 232, 0.35);
+  --color-border-active:    rgba(0, 213, 232, 0.70);
+  --color-border-danger:    rgba(255, 83, 83, 0.35);
+
+  /* Typography / Text Colors */
+  --color-text-primary:     var(--os-raw-white);
+  --color-text-secondary:   var(--os-raw-grey-400);
+  --color-text-muted:       var(--os-raw-grey-500);
+  --color-text-dim:         var(--os-raw-grey-600);
+  --color-text-cyan:        var(--os-raw-cyan);
+  --color-text-blue:        var(--os-raw-blue);
+
+  /* Brand Accents */
+  --color-accent-cyan:      var(--os-raw-cyan);
+  --color-accent-blue:      var(--os-raw-blue);
+  --color-accent-glow:      var(--os-raw-cyan-glow);
+
+  /* Operational Status */
+  --color-status-success:   var(--os-raw-status-live);
+  --color-status-warning:   var(--os-raw-status-amber);
+  --color-status-danger:    var(--os-raw-status-coral);
+
+  /* Typography Scale */
+  --font-sans:              Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono:              "JetBrains Mono", "Space Grotesk", Consolas, monospace;
+
+  --text-2xs:               0.6875rem; /* 11px */
+  --text-xs:                0.75rem;   /* 12px */
+  --text-sm:                0.8125rem; /* 13px */
+  --text-base:              0.9375rem; /* 15px */
+  --text-md:                1.0625rem; /* 17px */
+  --text-lg:                1.25rem;   /* 20px */
+  --text-xl:                1.5rem;    /* 24px */
+  --text-2xl:               1.875rem;  /* 30px */
+  --text-3xl:               2.375rem;  /* 38px */
+  --text-4xl:               3rem;      /* 48px */
+  --text-5xl:               3.75rem;   /* 60px */
+
+  --tracking-tight:          -0.025em;
+  --tracking-normal:         0em;
+  --tracking-wide:           0.06em;
+  --tracking-widest:         0.16em;
+  --tracking-tactical:       0.24em;
+
+  --leading-none:           1;
+  --leading-tight:          1.2;
+  --leading-snug:           1.375;
+  --leading-normal:         1.55;
+  --leading-relaxed:        1.7;
+
+  /* Spacing Scale (8pt rhythmic system) */
+  --space-0:                0px;
+  --space-1:                4px;
+  --space-2:                8px;
+  --space-3:                12px;
+  --space-4:                16px;
+  --space-5:                20px;
+  --space-6:                24px;
+  --space-8:                32px;
+  --space-10:               40px;
+  --space-12:               48px;
+  --space-16:               64px;
+  --space-20:               80px;
+  --space-24:               96px;
+  --space-32:               128px;
+
+  /* Layout Constraints */
+  --max-w-content:          1360px;
+  --max-w-narrow:           980px;
+  --nav-height:             70px;
+
+  /* Border Radii — restrained maritime geometry, avoiding generic bubble cards */
+  --radius-xs:              3px;
+  --radius-sm:              5px;
+  --radius-md:              8px;
+  --radius-lg:              12px;
+  --radius-full:            9999px;
+
+  /* Shadows & Glows */
+  --shadow-subtle:          0 4px 16px rgba(2, 6, 11, 0.45);
+  --shadow-panel:           0 12px 36px rgba(2, 6, 11, 0.65);
+  --shadow-dropdown:        0 18px 48px rgba(0, 0, 0, 0.8);
+  --glow-cyan-sm:           0 0 12px rgba(0, 213, 232, 0.22);
+  --glow-cyan-md:           0 0 24px rgba(0, 213, 232, 0.38);
+  --glow-blue-sm:           0 0 14px rgba(57, 169, 255, 0.22);
+  --glow-danger-sm:         0 0 14px rgba(255, 83, 83, 0.35);
+
+  /* Transitions & Timing */
+  --transition-fast:        150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal:      250ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-smooth:      400ms cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Z-index layers */
+  --z-bg:                   0;
+  --z-content:              10;
+  --z-panel:                20;
+  --z-nav:                  500;
+  --z-overlay:              900;
+  --z-modal:                1000;
+}
